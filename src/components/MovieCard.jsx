@@ -1,8 +1,40 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import "./MovieCard.css";
+import { child, get, ref } from "firebase/database";
+import { database } from "../tools/firebase";
 
-function MovieCard({ movieId, className = "", data, onClick }) {
+function MovieCard({
+  movieId,
+  className = "",
+  data: orgdata,
+  onClick,
+  autoGetData = false,
+}) {
+  const [data, setData] = useState(orgdata);
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      const confirmationMessage = "Are you sure you want to leave this page?";
+      e.returnValue = confirmationMessage;
+      return confirmationMessage;
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+  useEffect(() => {
+    if (!!data || !!autoGetData) return;
+    const dbRef = ref(database, "movies-ko");
+    (async () => {
+      const snapshot = await get(child(dbRef, `${movieId}`));
+      if (snapshot.exists()) {
+        setData(snapshot.val());
+      }
+    })();
+  }, [data]);
   if (!data) {
     return (
       <div
@@ -21,7 +53,7 @@ function MovieCard({ movieId, className = "", data, onClick }) {
       style={onClick && { cursor: "pointer" }}
       onClick={onClick}
     >
-      <div class="poster">
+      <div className="poster">
         <img
           src={"https://image.tmdb.org/t/p/w500/" + poster_path}
           alt={title + " Poster"}

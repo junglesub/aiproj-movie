@@ -25,3 +25,26 @@ export function getFirstNElements(data, n) {
 
   return result;
 }
+
+export function findDuplicates(arr) {
+  const seen = new Set();
+  const duplicates = new Set();
+
+  arr.forEach((item) => {
+    if (seen.has(item)) {
+      duplicates.add(item);
+    } else {
+      seen.add(item);
+    }
+  });
+
+  return Array.from(duplicates);
+}
+
+export function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+  }
+  return array;
+}

@@ -11,6 +11,7 @@ import { dummyCatData, categories as org_cat } from "./tools/categories";
 import MovieCard from "./components/MovieCard";
 import { getFirstNElements, getUniqueElements } from "./tools/funcs";
 import { child, get, ref } from "firebase/database";
+import PerPage from "./components/PerPage";
 
 function App() {
   const [mainMovies, setMainMovies] = useState({});
@@ -20,14 +21,15 @@ function App() {
   const selectedMovieInitStats = {
     step: 0,
     banned: [],
+    last: null,
     first: null,
-    second: null,
-    third: null,
-    fourth: null,
+    options: {},
   };
   const [selectedMovies, setSelectedMovies] = useState(selectedMovieInitStats);
 
   const categories = getFirstNElements(org_cat, 2);
+
+  console.log(selectedMovies);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -93,7 +95,12 @@ function App() {
   }
 
   if (selectedMovies.step > 0) {
-    return <div>Do things</div>;
+    return (
+      <PerPage
+        selectedMovies={selectedMovies}
+        setSelectedMovies={setSelectedMovies}
+      />
+    );
   }
 
   console.log(mainMovies);
@@ -116,10 +123,14 @@ function App() {
                 className=""
                 movieId={movieId}
                 data={mainMovies[movieId]}
+                autoGetData={false}
                 onClick={() => {
                   setSelectedMovies((prev) => ({
                     ...prev,
                     step: 1,
+                    last: movieId,
+                    first: movieId,
+                    banned: [movieId],
                   }));
                 }}
               />
