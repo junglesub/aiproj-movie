@@ -1,0 +1,22 @@
+.center {
+  text-align: center;
+}
+
+.mcenter {
+  margin: auto;
+}
+
+.options {
+  display: flex;
+}
+
+.options .MovieCard {
+  width: 200px;
+  /* height: 300px; */
+  margin-left: 8px;
+  margin-right: 8px;
+}
+
+.options .MovieCard {
+  aspect-ratio: 2 / 3;
+}
