@@ -27,7 +27,7 @@ function App() {
   };
   const [selectedMovies, setSelectedMovies] = useState(selectedMovieInitStats);
 
-  const categories = getFirstNElements(org_cat, 2);
+  const categories = getFirstNElements(org_cat, 5);
 
   console.log(selectedMovies);
 
@@ -47,13 +47,12 @@ function App() {
     const movieIds = getUniqueElements(categories);
     console.log(movieIds);
 
-    setMainMovies(dummyCatData);
-    return;
+    // setMainMovies(dummyCatData);
+    // return;
 
     const dbRef = ref(database, "movies-ko");
 
     (async () => {
-      movieIds.map((path) => console.log(path));
       const fetchPromises = movieIds.map((path) =>
         get(child(dbRef, `${path}`))
       );

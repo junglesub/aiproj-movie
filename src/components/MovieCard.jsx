@@ -9,9 +9,10 @@ function MovieCard({
   className = "",
   data: orgdata,
   onClick,
-  autoGetData = false,
+  autoGetData = true,
 }) {
   const [data, setData] = useState(orgdata);
+  useEffect(() => setData((prev) => ({ ...prev, ...orgdata })), [orgdata]);
   useEffect(() => {
     const handleBeforeUnload = (e) => {
       const confirmationMessage = "Are you sure you want to leave this page?";
@@ -26,7 +27,8 @@ function MovieCard({
     };
   }, []);
   useEffect(() => {
-    if (!!data || !!autoGetData) return;
+    if (!!data || !autoGetData) return;
+    console.log("Auto Data");
     const dbRef = ref(database, "movies-ko");
     (async () => {
       const snapshot = await get(child(dbRef, `${movieId}`));

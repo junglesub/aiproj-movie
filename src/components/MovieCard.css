@@ -13,7 +13,7 @@
 }
 .poster {
   width: 100%;
-  /* max-width: 200px;  */
+  max-width: 200px;
   height: 100%;
   background-color: #000;
   border-radius: 8px;

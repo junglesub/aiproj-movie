@@ -1,3 +1,19 @@
+.App h1,
+.App h2,
+.App h3,
+.App p {
+  /* box-sizing: border-box; */
+  margin-left: 32px;
+  margin-right: 32px;
+}
+
+.App .MovieCard:first-child {
+  margin-left: 32px;
+}
+.App .MovieCard:last-child {
+  margin-right: 32px;
+}
+
 .center {
   text-align: center;
 }
@@ -8,6 +24,8 @@
 
 .options {
   display: flex;
+  /* width: 100vw; */
+  overflow-x: scroll;
 }
 
 .options .MovieCard {
