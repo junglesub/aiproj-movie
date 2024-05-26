@@ -13,6 +13,7 @@ import { getFirstNElements, getUniqueElements } from "./tools/funcs";
 import { child, get, ref } from "firebase/database";
 import PerPage from "./components/PerPage";
 import Submit from "./components/Submit";
+import { Link } from "react-router-dom";
 
 function App() {
   const [mainMovies, setMainMovies] = useState({});
@@ -72,8 +73,14 @@ function App() {
   return (
     <div className="App">
       <h1>Handong Movie Selector</h1>
-      <p>여러분이 최근 재밌게 본 영화를 선택해보세요</p>
+      <p>
+        여러분이 최근 재밌게 본 영화를 선택해보세요{" "}
+        <Link className="center" to="/stats">
+          (결과 보러 가기)
+        </Link>
+      </p>
       <p>Choose a movie you've enjoyed watching recently.</p>
+
       {Object.keys(categories).map((catname) => (
         <div key={catname}>
           <h2>{catname}</h2>

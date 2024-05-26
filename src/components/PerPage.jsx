@@ -159,6 +159,7 @@ function PerPage({ setSelectedMovies, selectedMovies }) {
           onClick={() => nextQ(options[3])}
         />
       </div>
+      <div className="progress">{selectedMovies.step}/10</div>
     </div>
   );
 }
