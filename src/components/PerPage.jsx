@@ -10,6 +10,21 @@ import { findDuplicates, shuffleArray } from "../tools/funcs";
 function PerPage({ setSelectedMovies, selectedMovies }) {
   const [loading, setLoading] = useState(true);
   const [options, setOptions] = useState({});
+
+  useEffect(() => {
+    const handleBeforeUnload = (e) => {
+      const confirmationMessage = "Are you sure you want to leave this page?";
+      e.returnValue = confirmationMessage;
+      return confirmationMessage;
+    };
+
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
   useEffect(() => {
     setLoading(true);
     setOptions({});

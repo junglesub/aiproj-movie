@@ -13,19 +13,7 @@ function MovieCard({
 }) {
   const [data, setData] = useState(orgdata);
   useEffect(() => setData((prev) => ({ ...prev, ...orgdata })), [orgdata]);
-  useEffect(() => {
-    const handleBeforeUnload = (e) => {
-      const confirmationMessage = "Are you sure you want to leave this page?";
-      e.returnValue = confirmationMessage;
-      return confirmationMessage;
-    };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
-
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
   useEffect(() => {
     if (!!data || !autoGetData) return;
     console.log("Auto Data");
