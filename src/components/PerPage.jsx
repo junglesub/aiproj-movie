@@ -116,7 +116,7 @@ function PerPage({ setSelectedMovies, selectedMovies }) {
       step: prev.step + 1,
       banned: [...prev.banned, ...options.map((item) => item.movieId)],
       last: movie.movieId,
-      options: { ...prev.options, [prev.step]: movie },
+      options: { ...prev.options, [prev.step]: { ...movie, allOpts: options } },
     }));
   };
 

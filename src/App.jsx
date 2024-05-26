@@ -12,12 +12,10 @@ import MovieCard from "./components/MovieCard";
 import { getFirstNElements, getUniqueElements } from "./tools/funcs";
 import { child, get, ref } from "firebase/database";
 import PerPage from "./components/PerPage";
+import Submit from "./components/Submit";
 
 function App() {
   const [mainMovies, setMainMovies] = useState({});
-  const [user, setUser] = useState(null);
-  const auth = getAuth();
-
   const selectedMovieInitStats = {
     step: 0,
     banned: [],
@@ -30,18 +28,6 @@ function App() {
   const categories = getFirstNElements(org_cat, 5);
 
   console.log(selectedMovies);
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
-      } else {
-        setUser(null);
-      }
-    });
-
-    return () => unsubscribe();
-  }, [auth]);
 
   useEffect(() => {
     const movieIds = getUniqueElements(categories);
@@ -68,29 +54,8 @@ function App() {
     })();
   }, []);
 
-  const LoginPlease = () => {
-    return (
-      <div className="center">
-        <h1>Login Please</h1>
-        <button
-          onClick={() => {
-            signInWithPopup(auth, provider)
-              .then((result) => {
-                console.log(result.user);
-              })
-              .catch((error) => {
-                console.error(error);
-              });
-          }}
-        >
-          Login using google
-        </button>
-      </div>
-    );
-  };
-
-  if (!user) {
-    return <LoginPlease />;
+  if (selectedMovies.step > 10) {
+    return <Submit selectedMovies={selectedMovies} />;
   }
 
   if (selectedMovies.step > 0) {
@@ -106,9 +71,6 @@ function App() {
 
   return (
     <div className="App">
-      <button className="" onClick={() => signOut(auth)}>
-        Sign out
-      </button>
       <h1>Handong Movie Selector</h1>
       <p>여러분이 최근 재밌게 본 영화를 선택해보세요</p>
       <p>Choose a movie you've enjoyed watching recently.</p>
