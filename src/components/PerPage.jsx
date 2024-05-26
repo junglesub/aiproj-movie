@@ -137,6 +137,10 @@ function PerPage({ setSelectedMovies, selectedMovies }) {
 
   return (
     <div className="PerPage">
+      <div className="progress">
+        다음 추천 영화 중 가장 마음에 드는 영화를 선택해주세요 <br />
+        {selectedMovies.step} /10
+      </div>
       <div className="grid-container">
         <MovieCard
           className="grid-item"
@@ -159,7 +163,6 @@ function PerPage({ setSelectedMovies, selectedMovies }) {
           onClick={() => nextQ(options[3])}
         />
       </div>
-      <div className="progress">{selectedMovies.step}/10</div>
     </div>
   );
 }
