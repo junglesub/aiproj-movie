@@ -36,7 +36,7 @@ function Submit({ selectedMovies }) {
   }, [auth]);
   return (
     <div>
-      <h1>Thank you!</h1>
+      <h1>Almost Done!!</h1>
       <div className="center mcenter">
         {!user ? (
           <h3>Please Wait</h3>
@@ -70,7 +70,7 @@ function Submit({ selectedMovies }) {
               }
             }}
           >
-            Submit
+            Submit (등록하기)
           </button>
         )}
       </div>
