@@ -1,0 +1,50 @@
+.Stats {
+  word-break: keep-all;
+}
+
+.stat-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.stat-container img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stat-container .centered-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white; /* Change text color as needed */
+  background-color: rgba(0, 0, 0, 0.5); /* Background color with transparency */
+  font-size: 24px; /* Change font size as needed */
+
+  padding: 16px;
+  box-sizing: border-box;
+}
+.stat-container .rank {
+  font-weight: bold;
+}
+
+.stat-container .cnt {
+  background-color: rgba(255, 255, 255, 0.95);
+  color: black;
+  font-size: 0.7em;
+  margin-left: 4px;
+}
+
+.stat-container .title {
+  font-size: 0.8em;
+}
+.stat-container .desc {
+  font-size: 0.6em;
+}
