@@ -74,12 +74,12 @@ function App() {
     <div className="App">
       <h1>Handong Movie Selector</h1>
       <p>
-        여러분이 최근 재밌게 본 영화를 선택해보세요{" "}
+        여러분이 재밌게 본 영화를 선택해보세요{" "}
         <Link className="center" to="/stats">
           (결과 보러 가기)
         </Link>
       </p>
-      <p>Choose a movie you've enjoyed watching recently.</p>
+      <p>Choose a movie you've enjoyed watching.</p>
 
       {Object.keys(categories).map((catname) => (
         <div key={catname}>
