@@ -1,6 +1,10 @@
 # Movie Recommendation Website
 
-Welcome to the Movie Recommendation Service project! This project combines frontend development with AI models to provide personalized movie recommendations. It was specifically developed for a class project to evaluate the performance of different movie recommendation algorithms.
+https://movie.handong.app
+
+Welcome to the Movie Recommendation Website project! This project combines frontend development with AI models to provide personalized movie recommendations.
+
+It was specifically developed for a class (Introduction to Artificial Intelligence Project) project to evaluate the performance of different movie recommendation algorithms.
 
 ## About the Project
 
@@ -17,7 +21,7 @@ This project aims to create a movie recommendation service that leverages variou
 
 - **Frontend**: HTML, CSS, JavaScript, React
 - **Backend**: Firebase
-- **AI Models**: Implemented using
+- **AI Models**: Implemented using Python
 - **Statistical Analysis**: Python (SciPy, pandas)
 
 ## Presentation Resources
